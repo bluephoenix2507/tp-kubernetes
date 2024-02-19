@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: theo-husson
+  labels:
+    app: motd
+spec:
+  containers:
+  - name: motd
+    image: bluephoenix2507/modt-api:0.1
