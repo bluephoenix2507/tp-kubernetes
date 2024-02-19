@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: motd-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: motd
+  template:
+    metadata:
+      labels:
+        app: motd
+    spec:
+      containers:
+      - name: motd
+        image: bluephoenix2507/modt-api:0.1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: motd-config
+              key: message
